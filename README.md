@@ -1,5 +1,7 @@
 # Project 5 — Customer Segmentation & RFM Analysis
+## Power BI Dashboard
 
+![Customer Segmentation & RFM Dashboard](Project5_Dashboard.png)
 ## Project Overview
 
 This project analyzes customer purchasing behavior using Recency, Frequency, and Monetary (RFM) analysis.
