@@ -1,7 +1,7 @@
-# Project 5 — Customer Segmentation & RFM Analysis
+﻿# Customer Segmentation & RFM Analysis
 ## Power BI Dashboard
 
-![Customer Segmentation & RFM Dashboard](Project5_Dashboard.png)
+![Customer Segmentation & RFM Dashboard](Customer_Segmentation_RFM_Dashboard.png)
 ## Project Overview
 
 This project analyzes customer purchasing behavior using Recency, Frequency, and Monetary (RFM) analysis.
@@ -11,7 +11,11 @@ The objective is to identify valuable customers, detect retention risks, and pro
 **Technologies:** Python, pandas, JupyterLab, PostgreSQL 15, SQL, Power BI Desktop
 
 **Dataset:** Online Retail  
-**Analysis period:** December 1, 2010 – December 9, 2011
+**Analysis period:** December 1, 2010 â€“ December 9, 2011
+
+## Client Use Case
+
+This analysis helps retailers identify their highest-value customers, prioritize retention campaigns, and focus marketing budgets where they can protect the most revenue. A client can replace the sample data with transaction history to receive validated RFM segments, revenue concentration analysis, an at-risk customer list, and an interactive Power BI dashboard.
 
 ## 1. Business Objectives
 
@@ -35,7 +39,7 @@ Python / pandas / JupyterLab
 Data Cleaning and Validation
        |
        v
-PostgreSQL — project5_rfm
+PostgreSQL â€” project5_rfm
        |
        v
 RFM Calculations
@@ -87,10 +91,10 @@ Customers are assigned to five segments using an ordered SQL `CASE` expression.
 
 | Segment | Assignment Rule |
 |---|---|
-| VIP | R ≥ 4 AND F ≥ 4 AND M ≥ 4 |
-| Loyal | R ≥ 3 AND F ≥ 3, excluding VIP |
-| At Risk | R ≤ 2 AND F ≥ 3 |
-| Lost | R ≤ 1 AND F ≤ 2 |
+| VIP | R â‰¥ 4 AND F â‰¥ 4 AND M â‰¥ 4 |
+| Loyal | R â‰¥ 3 AND F â‰¥ 3, excluding VIP |
+| At Risk | R â‰¤ 2 AND F â‰¥ 3 |
+| Lost | R â‰¤ 1 AND F â‰¤ 2 |
 | Other | Customers not matching earlier conditions |
 
 The rules are evaluated in sequence. Each customer receives the first matching classification.
@@ -134,7 +138,7 @@ The following checks were completed:
 |---|---|
 | Customer records | 4,338 |
 | Distinct customer IDs | 4,338 |
-| RFM score ranges | 1–5 |
+| RFM score ranges | 1â€“5 |
 | Missing RFM scores | 0 |
 | Missing segment values | 0 |
 | Invalid segment assignments | 0 |
@@ -143,7 +147,7 @@ The following checks were completed:
 
 **Segmentation QA:** All 4,338 customer assignments were independently recalculated in Python and compared against the stored PostgreSQL results.
 
-**Result: PASS — Zero incorrect assignments.**
+**Result: PASS â€” Zero incorrect assignments.**
 
 These checks confirm the tested outputs; they do not constitute exhaustive validation of every upstream data-cleaning or transformation step.
 
@@ -166,11 +170,11 @@ The final dashboard contains three sections.
 - Average Customer Spending by Segment
 - Days Since Last Purchase by Segment
 
-The dashboard uses a 1920 × 1080 (16:9) canvas.
+The dashboard uses a 1920 Ã— 1080 (16:9) canvas.
 
 **Final Power BI deliverable:**
 
-`Project5_Customer_Segmentation_Final.pbix`
+`Customer_Segmentation_RFM_Analysis.pbix`
 
 ## 8. Key Business Findings
 
@@ -194,11 +198,11 @@ Recommendations are hypotheses to be tested, not established campaign results.
 
 ## 10. Project Deliverables
 
-- `Project5_RFM_Analysis_Public.ipynb` — analysis notebook and validation tests.
-- `customer_segments.csv` — customer-level RFM and segmentation output.
-- `Project5_Customer_Segmentation_Final.pbix` — final interactive Power BI report.
-- `Project5_Executive_Summary.pdf` — client-facing executive summary.
-- `README.md` — technical documentation.
+- `Customer_Segmentation_RFM_Analysis.ipynb` â€” analysis notebook and validation tests.
+- `customer_segments.csv` â€” customer-level RFM and segmentation output.
+- `Customer_Segmentation_RFM_Analysis.pbix` â€” final interactive Power BI report.
+- `Customer_Segmentation_RFM_Executive_Summary.pdf` â€” client-facing executive summary.
+- `README.md` â€” technical documentation.
 
 ## 11. Limitations
 
@@ -214,3 +218,5 @@ Recommendations are hypotheses to be tested, not established campaign results.
 This project demonstrates an end-to-end customer analytics workflow combining data processing, PostgreSQL-based RFM segmentation, quality assurance, Power BI visualization, and actionable business reporting.
 
 The principal business finding is that customer revenue is highly concentrated among VIP customers, while previously active customers represent opportunities for carefully measured retention initiatives.
+
+
