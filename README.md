@@ -1,4 +1,4 @@
-﻿# Customer Segmentation & RFM Analysis
+# Customer Segmentation & RFM Analysis
 ## Power BI Dashboard
 
 ![Customer Segmentation & RFM Dashboard](Customer_Segmentation_RFM_Dashboard.png)
@@ -11,11 +11,23 @@ The objective is to identify valuable customers, detect retention risks, and pro
 **Technologies:** Python, pandas, JupyterLab, PostgreSQL 15, SQL, Power BI Desktop
 
 **Dataset:** Online Retail  
-**Analysis period:** December 1, 2010 â€“ December 9, 2011
+**Analysis period:** December 1, 2010 – December 9, 2011
 
 ## Client Use Case
 
 This analysis helps retailers identify their highest-value customers, prioritize retention campaigns, and focus marketing budgets where they can protect the most revenue. A client can replace the sample data with transaction history to receive validated RFM segments, revenue concentration analysis, an at-risk customer list, and an interactive Power BI dashboard.
+
+## Reproduce the Analysis
+
+1. Download **Online Retail.xlsx** from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/352/online+retail).
+2. Place the spreadsheet beside the notebook, or set `RFM_DATA_PATH` to its location.
+3. Create an empty PostgreSQL database named `project5_rfm` (or set `RFM_DB_NAME`).
+4. Install the packages in `requirements.txt`.
+5. Open `Customer_Segmentation_RFM_Analysis.ipynb` and run all cells from a fresh kernel.
+
+Optional database environment variables are `RFM_DB_HOST`, `RFM_DB_PORT`, `RFM_DB_NAME`, and `RFM_DB_USER`. The password is requested securely at runtime and is not stored in the repository.
+
+The notebook is rerunnable: it rebuilds the project tables in dependency order and prevents duplicate raw-data loads.
 
 ## 1. Business Objectives
 
@@ -39,7 +51,7 @@ Python / pandas / JupyterLab
 Data Cleaning and Validation
        |
        v
-PostgreSQL â€” project5_rfm
+PostgreSQL — project5_rfm
        |
        v
 RFM Calculations
@@ -91,10 +103,10 @@ Customers are assigned to five segments using an ordered SQL `CASE` expression.
 
 | Segment | Assignment Rule |
 |---|---|
-| VIP | R â‰¥ 4 AND F â‰¥ 4 AND M â‰¥ 4 |
-| Loyal | R â‰¥ 3 AND F â‰¥ 3, excluding VIP |
-| At Risk | R â‰¤ 2 AND F â‰¥ 3 |
-| Lost | R â‰¤ 1 AND F â‰¤ 2 |
+| VIP | R ≥ 4 AND F ≥ 4 AND M ≥ 4 |
+| Loyal | R ≥ 3 AND F ≥ 3, excluding VIP |
+| At Risk | R ≤ 2 AND F ≥ 3 |
+| Lost | R ≤ 1 AND F ≤ 2 |
 | Other | Customers not matching earlier conditions |
 
 The rules are evaluated in sequence. Each customer receives the first matching classification.
@@ -138,7 +150,7 @@ The following checks were completed:
 |---|---|
 | Customer records | 4,338 |
 | Distinct customer IDs | 4,338 |
-| RFM score ranges | 1â€“5 |
+| RFM score ranges | 1–5 |
 | Missing RFM scores | 0 |
 | Missing segment values | 0 |
 | Invalid segment assignments | 0 |
@@ -147,7 +159,7 @@ The following checks were completed:
 
 **Segmentation QA:** All 4,338 customer assignments were independently recalculated in Python and compared against the stored PostgreSQL results.
 
-**Result: PASS â€” Zero incorrect assignments.**
+**Result: PASS — Zero incorrect assignments.**
 
 These checks confirm the tested outputs; they do not constitute exhaustive validation of every upstream data-cleaning or transformation step.
 
@@ -170,7 +182,7 @@ The final dashboard contains three sections.
 - Average Customer Spending by Segment
 - Days Since Last Purchase by Segment
 
-The dashboard uses a 1920 Ã— 1080 (16:9) canvas.
+The dashboard uses a 1920 × 1080 (16:9) canvas.
 
 **Final Power BI deliverable:**
 
@@ -198,11 +210,11 @@ Recommendations are hypotheses to be tested, not established campaign results.
 
 ## 10. Project Deliverables
 
-- `Customer_Segmentation_RFM_Analysis.ipynb` â€” analysis notebook and validation tests.
-- `customer_segments.csv` â€” customer-level RFM and segmentation output.
-- `Customer_Segmentation_RFM_Analysis.pbix` â€” final interactive Power BI report.
-- `Customer_Segmentation_RFM_Executive_Summary.pdf` â€” client-facing executive summary.
-- `README.md` â€” technical documentation.
+- `Customer_Segmentation_RFM_Analysis.ipynb` — analysis notebook and validation tests.
+- `customer_segments.csv` — customer-level RFM and segmentation output.
+- `Customer_Segmentation_RFM_Analysis.pbix` — final interactive Power BI report.
+- `Customer_Segmentation_RFM_Executive_Summary.pdf` — client-facing executive summary.
+- `README.md` — technical documentation.
 
 ## 11. Limitations
 
